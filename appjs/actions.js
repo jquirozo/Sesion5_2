@@ -34,7 +34,7 @@ function leerContactos(){
 		pgAlert('No se han podido leer los contactos');
 	});
 }
-/*
+
 //Crear contactos
 function newContact(){
 	if($('#contDispley').val() != '' && $('#contName').val() != '' && $('#contFamily').val() != '' && $('#contPhone').val() != ''){
@@ -61,6 +61,7 @@ function newContact(){
 		pgAlert("Tienes que llenar todos los campos");
 	}
 }
+/*
 //Lectura de archivos
 function readFiles(){
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
@@ -158,6 +159,18 @@ $(document).ready(function(){
 		}, false);
 		//Lista de contactos
 		leerContactos();//Leer Contactos
+		//Acciones de formularios
+			$('.sendForm').click(function(){
+				switch($(this).parents('ul').attr('id')){
+					case 'newContact':
+						newContact();
+						break;
+					case 'playFiles':
+						writeFiles();
+						break;
+				}
+				
+			});
 	}, false);
 });
 function eventHistory(action){
