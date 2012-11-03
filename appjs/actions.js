@@ -28,6 +28,7 @@ function leerContactos(){
 		for(i=0;i<contactos.length;i++){
 			var contacto = contactos[i];
 			contactosList+='<li><a href="tel://'+contacto.name.formatted+'">'+contacto.phoneNumbers[0].value+'</a></li>';
+			$('#contactsList').html(contactosList);
 		}
 	}, function(){
 		pgAlert('No se han podido leer los contactos');
