@@ -56,31 +56,33 @@ function newContact(){
 			pgAlert("No se pudo Guardar");
 		});
 		//Volver a leer contactos
-		readContacts();
+		leerContactos();
 	}else{
 		pgAlert("Tienes que llenar todos los campos");
 	}
 }
-/*
+
 //Lectura de archivos
 function readFiles(){
 	window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, function(fileSystem){
 		fileSystem.root.getFile('read-write.txt', null, function(archivo){
 			archivo.file(function(archivo){
-				var lector = new FileReader();
+				var lector = new FileReader();				
 				lector.onloadend = function(e){
-					$('#fileContent').val(e.target.result);
+					pgAlert('Lectura de archivo');					
 				}
+				$('#fileContent').text(lector.readAsText(archivo));
+				alert(lector.readAsText(archivo));
 			}, function(){
 				pgAlert("No existe el archivo, agrega contenido y luego presiona en Escribir");
 			});
 		},
 		function(err){
-			pgAlert("No se pudo acceder al sistema de archivos");
+			pgAlert("No se pudo acceder al sistema de archivos 1");
 		});
 	},
 	function(err){
-		pgAlert("No se pudo acceder al sistema de archivos");
+		pgAlert("No se pudo acceder al sistema de archivos 2");
 	});
 }
 //Escritura de archivos
@@ -103,6 +105,7 @@ function writeFiles(){
 		pgAlert("No se pudo acceder al sistema de archivos");
 	});
 }
+/*
 $(document).ready(function(){
 	document.addEventListener("deviceready", function(){
 		deviceData();//Datos del dispositivo
