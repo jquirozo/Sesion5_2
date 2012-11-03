@@ -1,6 +1,6 @@
 //alertas del dispositivo
 
-/*function pgAlert(mess){
+function pgAlert(mess){
 	var title=$('title').text();
 	var btnName='Aceptar';
 	function error(){
@@ -8,6 +8,7 @@
 	}
 	navigator.notification.alert(mess, error, title, btnName);
 }
+/*
 //Datos del dispositivo
 function deviceData(){
 	$('#devic table td').eq(1).text(device.name);
@@ -19,9 +20,9 @@ function deviceData(){
 //Historial de Eventos
 function eventHistory(action){
 	$('#eventsHistory').append('<li>'+action+'</li>');
-}
+}*/
 //Contactos en el dispositivo
-function readContacts(){
+function leerContactos(){
 	var contactosList='';
 	navigator.contacts.find(["name", "phoneNumbers"], function(contactos){
 		for(i=0;i<contactos.length;i++){
@@ -30,9 +31,9 @@ function readContacts(){
 		}
 	}, function(){
 		pgAlert('No se han podido leer los contactos');
-	}
-	$('#contactsList').html(contactosList);
+	});
 }
+/*
 //Crear contactos
 function newContact(){
 	if($('#contDispley').val() != '' && $('#contName').val() != '' && $('#contFamily').val() != '' && $('#contPhone').val() != ''){
@@ -154,6 +155,8 @@ $(document).ready(function(){
 		document.addEventListener("offline", function(){//Al desconectarse de la red
 			eventHistory('La aplicaci&oacute;n se ha desconectado');
 		}, false);
+		//Lista de contactos
+		leerContactos();//Leer Contactos
 	}, false);
 });
 function eventHistory(action){
